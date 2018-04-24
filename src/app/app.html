@@ -1,59 +1,19 @@
-<ion-menu [content]="mainContent">
+<script src="https://apis.google.com/js/client.js"></script>
+<ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>
-        Menu
-      </ion-title>
+      <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content id="side-menu21" style="background-color:#76EFD6;">
-    <ion-list id="menu-list1">
-      <ion-item color="none" id="menu-list-item5">
-        <ion-avatar item-left>
-          <img src="assets/img/c3RfLfALRiOhIsCCrjA3_joao-kleber4.jpg" />
-        </ion-avatar>
-        <h2>
-          João Kléber
-        </h2>
-      </ion-item>
-      <ion-item color="none" menuClose="" on-click="goToHome()" id="menu-list-item4">
-        <ion-icon name="person" item-left></ion-icon>
-        Perfil
-      </ion-item>
-      <ion-item-sliding>
-        <ion-item color="none" menuClose="" on-click="goToCart()" id="menu-list-item2">
-          <ion-icon name="calendar" item-left></ion-icon>
-          Meus Eventos
-        </ion-item>
-        <ion-item-options side="left">
-          <button ion-button color="dark"></button>
-        </ion-item-options>
-      </ion-item-sliding>
-      <ion-item-sliding>
-        <ion-item color="none" menuClose="" on-click="goToCart()" id="menu-list-item7">
-          <ion-icon name="people" item-left></ion-icon>
-          Meus grupos
-        </ion-item>
-        <ion-item-options side="left">
-          <button ion-button color="dark"></button>
-        </ion-item-options>
-      </ion-item-sliding>
-      <ion-item-sliding>
-        <ion-item color="none" menuClose="" on-click="goToCart()" id="menu-list-item8">
-          <ion-icon name="build" item-left></ion-icon>
-          Configurações
-        </ion-item>
-        <ion-item-options side="left">
-          <button ion-button color="dark"></button>
-        </ion-item-options>
-      </ion-item-sliding>
-      <ion-item color="none" menuClose="" on-click="goToCloud()" id="menu-list-item3">
-        <ion-icon name="log-out" item-left></ion-icon>
-        Sair
-      </ion-item>
+  <ion-content>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
     </ion-list>
-    <img src="assets/img/mKJijE4ISXGXGM2lFebi_logodef.png" style="display:block;width:100%;height:;" />
   </ion-content>
+
 </ion-menu>
 
-<ion-nav #mainContent [root]="rootPage"></ion-nav>
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
